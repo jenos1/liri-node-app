@@ -4,19 +4,19 @@
 ## Introduction
 * It is run from the command line.
 * From the terminal, enter the following:
-..* node liri.js then one of the following categories:
-..* my-tweets
-..* spotify-this-song
-..* movie-this
-..* do-what-it-says
+  * node liri.js then one of the following categories:
+  * my-tweets
+  * spotify-this-song
+  * movie-this
+  * do-what-it-says
 * After either the "spotify" or "movie" category, you may then add your selected song or movie to search for.
 * Example for movie:
-..* node liri.js movie-this '<movie name here>'
+  * node liri.js movie-this '<movie name here>'
 
 ## Installation
 * Requires the following npm modules which will be loaded automatically:
-..* fs-extra
-..* dotenv
-..* node-spotify-api
-..* request
-..* twitter
+  * fs-extra
+  * dotenv
+  * node-spotify-api
+  * request
+  * twitter
