@@ -1,5 +1,6 @@
 var dotenv = require("dotenv").config();
 var file = require("file-system");
+var fse = require('fs-extra');
 var request = require("request");
 var keys = require("./keys.js");
 var Twitter = require("twitter");
@@ -41,7 +42,6 @@ function myTweets() {
       console.log('Error occurred: ' + err);
       return;
     } else {
-      // console.log(tweets);
         for (var i = 0; i < 5; i++) {
           var tweetInfo = tweets;
           if (tweetInfo[i] != undefined) {
@@ -49,7 +49,6 @@ function myTweets() {
             "Username: " + tweetInfo[i].user.screen_name + "\n" +
             "Tweet: " + tweetInfo[i].text + "\n" +
             "Date Created: " + tweetInfo[i].created_at + "\n";
-        console.log(results);    
         }
       }
     }
@@ -81,11 +80,27 @@ function spotifyThisSong(songName) {
           "Song: " + songInfo[i].name + "\n" +
           "Album: " + songInfo[i].album.name + "\n" +
           "Preview Url: " + songInfo[i].preview_url + "\n";
-        console.log(results);
         }
      };
   });
 }
+  // This function, uses fse module that reads & writes to access the random.txt file and execute the text in command line.
+  function doWhatItSays(){
+    fse.readFile("random.txt", "utf8", function(err,data) {
+      if (err) {
+        console.log("Error occurred" + err);
+      } else {
+        var results = data.split(",");
+        var arg2 = results[0];
+        var arg3 = results[1];
+        process.argv.splice(2,1)
+        process.argv.push(arg2);
+        process.argv.push(arg3);
+        spotifyThisSong(); 
+      }
+    });
+      
+  }
 
 // Function to find movies using request module & OMDB API
 function movieThis() {
@@ -111,23 +126,7 @@ function movieThis() {
           "Language: " + movieObj.Language + "\n" +
           "Plot: " + movieObj.Plot + "\n" +
           "Actors: " + movieObj.Actors + "\n" 
-      // console.log(movieObj); // Show the text in the terminal
-      console.log(results);
       }
    }
   })
-}
-
-  // This function, uses the reads & writes module to access the random.txt file and execute the text in command line.
-function doWhatItSays(){
-  file.readFile("random.txt", "utf8", function(err,data) {
-    if (error) {
-      console.log("Error occurred" + error);
-    } else {
-      var results = data.split(",");
-      spotifyThisSong(results[0], results[1]);
-    }
-  });
-    console.log('post readfile');
-
 }
