@@ -46,9 +46,11 @@ function myTweets() {
           var tweetInfo = tweets;
           if (tweetInfo[i] != undefined) {
             var results = 
-            "Username: " + tweetInfo[i].user.screen_name + "\n" +
+            "Username: " + tweetInfo[i]
+            .user.screen_name + "\n" +
             "Tweet: " + tweetInfo[i].text + "\n" +
             "Date Created: " + tweetInfo[i].created_at + "\n";
+            console.log(results);
         }
       }
     }
@@ -58,7 +60,7 @@ function myTweets() {
 // Spotify function to call Spotify API
 function spotifyThisSong(songName) {
   var spotifyClient = new Spotify(keys.spotify);
-  var songName = process.argv[3];
+  songName = process.argv[3];
 
   if (!songName) {
     songName = "The Sign";
@@ -80,6 +82,7 @@ function spotifyThisSong(songName) {
           "Song: " + songInfo[i].name + "\n" +
           "Album: " + songInfo[i].album.name + "\n" +
           "Preview Url: " + songInfo[i].preview_url + "\n";
+          console.log(results);
         }
      };
   });
@@ -98,8 +101,7 @@ function spotifyThisSong(songName) {
         process.argv.push(arg3);
         spotifyThisSong(); 
       }
-    });
-      
+    }); 
   }
 
 // Function to find movies using request module & OMDB API
@@ -126,6 +128,7 @@ function movieThis() {
           "Language: " + movieObj.Language + "\n" +
           "Plot: " + movieObj.Plot + "\n" +
           "Actors: " + movieObj.Actors + "\n" 
+          console.log(results);
       }
    }
   })
