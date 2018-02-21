@@ -1,8 +1,8 @@
 # liri-node-app
-* LIRI is a command line node application that takes in parameters and gives you back data.  LIRI is a Language Interpretation and Recognition Interface, similar to SIRI on the iPhone.
+* LIRI is a command line node app to return tweets, song information or movie information. LIRI is a Language Interpretation and Recognition Interface, similar to SIRI on the iPhone.
 
 ## Introduction
-* It is run from the command line.
+* This application is run from the command line.
 * From the terminal, enter the following:
   * node liri.js 
   * THEN one of the following categories:
